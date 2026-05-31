@@ -6,7 +6,6 @@
   <title>Nasrin &amp; Omar</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&amp;family=Caveat:wght@400;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <style>
     :root {
       --rose: #e8a0b4;
@@ -19,18 +18,6 @@
     body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
     .font-display { font-family: 'Fraunces', serif; }
     .font-hand { font-family: 'Caveat', cursive; }
-    @media (max-width: 768px) {
-      html { font-size: 15px; }
-    }
-    @media (max-width: 640px) {
-      html { font-size: 14px; }
-    }
-    @media (max-width: 480px) {
-      html { font-size: 13px; }
-    }
-    @media (max-width: 375px) {
-      html { font-size: 12px; }
-    }
 
     #cursor-glow {
       position: fixed; width: 500px; height: 500px; border-radius: 50%;
@@ -39,7 +26,6 @@
       transition: left 0.15s ease-out, top 0.15s ease-out;
     }
 
-    /* Bokeh overlay */
     .bokeh-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
     .bokeh-dot {
       position: absolute; border-radius: 50%;
@@ -52,11 +38,8 @@
     }
 
     @keyframes petalFall {
-      0% { transform: translateY(-10vh) translateX(0) rotate(0deg) scale(1); opacity: 0.7; }
-      25% { transform: translateY(25vh) translateX(40px) rotate(90deg) scale(0.9); opacity: 0.6; }
-      50% { transform: translateY(50vh) translateX(-20px) rotate(180deg) scale(0.8); opacity: 0.5; }
-      75% { transform: translateY(75vh) translateX(30px) rotate(270deg) scale(0.6); opacity: 0.3; }
-      100% { transform: translateY(110vh) translateX(-10px) rotate(360deg) scale(0.4); opacity: 0; }
+      0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(110vh) translateX(-10px) rotate(360deg); opacity: 0; }
     }
     .petal { position: fixed; pointer-events: none; z-index: 1; animation: petalFall linear infinite; }
 
@@ -78,7 +61,7 @@
     .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(28px); border: 1px solid rgba(255,255,255,0.12); }
     .glass-light { background: rgba(255,255,255,0.65); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 8px 40px rgba(232,160,180,0.1); }
 
-    .gradient-border { position: relative; overflow: visible; }
+    .gradient-border { position: relative; }
     .gradient-border::before {
       content: ''; position: absolute; inset: -2px; border-radius: inherit; padding: 2px;
       background: linear-gradient(var(--gradient-angle, 0deg), var(--rose), var(--lavender), var(--gold), var(--rose));
@@ -102,7 +85,6 @@
     @keyframes scaleIn { from { opacity:0; transform: scale(0.8); } to { opacity:1; transform: scale(1); } }
     @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.08); opacity: 1; } }
 
-    /* Animated underline for section titles */
     .animated-underline { position: relative; display: inline-block; }
     .animated-underline::after {
       content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 3px;
@@ -121,10 +103,6 @@
     .heart-float { position: absolute; animation: float 6s ease-in-out infinite; opacity: 0.3; }
     .card-hover { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s ease; }
     .card-hover:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 35px 70px rgba(232,160,180,0.3); }
-    @media (max-width: 640px) {
-      .card-hover:hover { transform: translateY(-6px) scale(1.01); }
-      .glass-light { padding: 1rem; }
-    }
     .glow-btn { animation: pulse-glow 3s ease-in-out infinite; }
     .heartbeat { animation: heartbeat 2s ease-in-out infinite; }
 
@@ -134,14 +112,13 @@
         radial-gradient(ellipse at 10% 20%, rgba(232,160,180,0.6) 0%, transparent 40%),
         radial-gradient(ellipse at 90% 80%, rgba(196,181,227,0.6) 0%, transparent 40%),
         radial-gradient(ellipse at 50% 50%, rgba(212,165,116,0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 30% 70%, rgba(245,213,224,0.4) 0%, transparent 35%),
         linear-gradient(160deg, #faf5ef 0%, #f5d5e0 30%, #c4b5e3 65%, #faf5ef 100%);
     }
 
     .divider-wave { height: 3px; background: linear-gradient(90deg, transparent, var(--rose), var(--gold), var(--rose), transparent); margin: 1.5rem auto; border-radius: 2px; }
     .divider-wave.visible { animation: ribbonReveal 1s ease-out forwards; width: 0; }
 
-    .tilt-card { transition: transform 0.3s ease, box-shadow 0.3s ease; transform-style: preserve-3d; will-change: transform; }
+    .tilt-card { transition: transform 0.3s ease, box-shadow 0.3s ease; transform-style: preserve-3d; }
 
     #starfield { position: absolute; inset: 0; z-index: 0; }
 
@@ -160,112 +137,63 @@
     .quote-fade { animation: fadeIn 0.6s ease forwards; }
     .counter-num { font-variant-numeric: tabular-nums; }
 
-    @keyframes countPop { 0% { transform: scale(1.4) rotateX(20deg); opacity:0.4; } 100% { transform: scale(1) rotateX(0); opacity:1; } }
+    @keyframes countPop { 0% { transform: scale(1.4); opacity:0.4; } 100% { transform: scale(1); opacity:1; } }
     .count-pop { animation: countPop 0.5s cubic-bezier(0.22,1,0.36,1); }
-
-    @media (max-width: 768px) {
-      .hero-mesh { min-height: auto; padding: 2rem 1rem; }
-      .parallax-strip { height: calc(50 * min(var(--vh,1vh),1vh)) !important; }
-      .tilt-card { transition: none; }
-      .tilt-card:hover { transform: none; box-shadow: none; }
-      .grid { gap: 1.5rem !important; }
-      .glass-light { padding: 1rem !important; }
-      section { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
-      h1 { font-size: 2.5rem !important; line-height: 1.1; }
-      h2 { font-size: 1.75rem !important; }
-      p { font-size: 0.95rem !important; line-height: 1.5; }
-    }
-    @media (max-width: 640px) {
-      .hero-mesh { padding: 1.5rem 0.75rem; }
-      .parallax-strip { height: calc(45 * min(var(--vh,1vh),1vh)) !important; }
-      h1 { font-size: 2rem !important; }
-      h2 { font-size: 1.5rem !important; }
-      p { font-size: 0.9rem !important; }
-      section { padding: 1.25rem !important; }
-      .glass-light { padding: 0.875rem !important; }
-      .px-6 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
-      .max-w-4xl, .max-w-3xl, .max-w-6xl { max-width: 100% !important; }
-      .grid { gap: 1rem !important; }
-      .card-hover { gap: 0.5rem !important; }
-    }
-    @media (max-width: 480px) {
-      .hero-mesh { padding: 1rem 0.5rem; min-height: auto; }
-      .parallax-strip { height: calc(40 * min(var(--vh,1vh),1vh)) !important; }
-      h1 { font-size: 1.5rem !important; line-height: 1; }
-      h2 { font-size: 1.25rem !important; }
-      p { font-size: 0.85rem !important; line-height: 1.4; }
-      section { padding: 1rem !important; }
-      .glass-light { padding: 0.75rem !important; }
-      .px-6 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
-      .max-w-4xl, .max-w-3xl, .max-w-6xl { max-width: 100% !important; }
-      .grid { gap: 0.75rem !important; }
-      .glass { padding: 0.75rem !important; }
-    }
-    @media (max-width: 375px) {
-      h1 { font-size: 1.25rem !important; }
-      h2 { font-size: 1.1rem !important; }
-      p { font-size: 0.8rem !important; }
-      section { padding: 0.75rem !important; }
-      .glass-light { padding: 0.6rem !important; }
-    }
 
     #scroll-progress { position: fixed; top:0; left:0; height:3px; z-index:10000; background: linear-gradient(90deg, var(--rose), var(--lavender), var(--gold), var(--rose)); background-size: 200% 100%; animation: shimmer 3s linear infinite; transition: width 0.1s linear; }
 
     #love-meter { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 9998; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    @media (max-width: 640px) {
-      #love-meter { display: none; }
-    }
     #love-meter-bar { width: 6px; height: 120px; border-radius: 3px; background: rgba(232,160,180,0.2); overflow: hidden; position: relative; }
     #love-meter-fill { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, var(--rose), var(--lavender), var(--gold)); border-radius: 3px; transition: height 0.3s ease; }
-    #love-meter-heart { font-size: 1.2rem; animation: breathe 2s ease-in-out infinite; }
 
     .magnetic-btn { transition: transform 0.2s ease-out; }
-
     .section-fade { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .section-fade.in-view { opacity: 1; transform: translateY(0); }
 
-    /* Tap burst hearts */
     @keyframes burstHeart {
       0% { transform: translate(-50%,-50%) scale(0); opacity: 1; }
-      50% { opacity: 1; }
       100% { transform: translate(-50%,-50%) translateY(-80px) scale(1.5); opacity: 0; }
     }
-    .burst-heart {
-      position: fixed; pointer-events: none; z-index: 9997;
-      font-size: 1.5rem; animation: burstHeart 1s ease-out forwards;
-    }
+    .burst-heart { position: fixed; pointer-events: none; z-index: 9997; font-size: 1.5rem; animation: burstHeart 1s ease-out forwards; }
 
-    /* Audio visualizer ring */
     @keyframes vizPulse {
       0%,100% { transform: scale(1); box-shadow: 0 0 20px rgba(232,160,180,0.3); }
-      50% { transform: scale(1.1); box-shadow: 0 0 50px rgba(232,160,180,0.7), 0 0 80px rgba(196,181,227,0.4); }
+      50% { transform: scale(1.1); box-shadow: 0 0 50px rgba(232,160,180,0.7); }
     }
     .viz-active { animation: vizPulse 0.6s ease-in-out infinite; }
 
-    /* Secret message */
-    @keyframes secretReveal {
-      from { opacity: 0; transform: translateY(20px) scale(0.8); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
+    @keyframes secretReveal { from { opacity: 0; transform: translateY(20px) scale(0.8); } to { opacity: 1; transform: translateY(0) scale(1); } }
     .secret-msg { animation: secretReveal 0.8s ease forwards; }
+
+    @media (max-width: 768px) {
+      .hero-mesh { min-height: auto; padding: 2rem 1rem; }
+      .parallax-strip { height: calc(50 * min(var(--vh,1vh),1vh)) !important; }
+      #love-meter { display: none; }
+      .card-hover:hover { transform: translateY(-6px) scale(1.01); }
+    }
+    @media (max-width: 640px) {
+      .hero-mesh { padding: 1.5rem 0.75rem; }
+      h1 { font-size: 2rem !important; }
+    }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
  </head>
  <body data-template-id="__page-root" class="w-full">
   <div id="scroll-progress" style="width:0%"></div>
   <div id="cursor-glow"></div>
-  <div id="petals" class="fixed inset-0 pointer-events-none z-[1]" aria-hidden="true"></div><!-- Bokeh Overlay -->
-  <div class="bokeh-overlay" id="bokeh-overlay" aria-hidden="true"></div><!-- Love Meter -->
-  <div id="love-meter" aria-hidden="true"><span id="love-meter-heart">💗</span>
+  <div id="petals" class="fixed inset-0 pointer-events-none z-[1]" aria-hidden="true"></div>
+  <div class="bokeh-overlay" id="bokeh-overlay" aria-hidden="true"></div>
+  <div id="love-meter" aria-hidden="true"><span id="love-meter-heart" style="font-size:1.2rem;animation:breathe 2s ease-in-out infinite">💗</span>
    <div id="love-meter-bar">
     <div id="love-meter-fill" style="height:0%"></div>
    </div>
   </div><!-- HERO -->
   <section class="hero-mesh relative flex items-center justify-center overflow-hidden section-fade in-view" id="hero">
-   <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"><span class="heart-float" style="top:5%;left:10%;animation-delay:0s;font-size:1.6rem">💕</span> <span class="heart-float" style="top:15%;left:75%;animation-delay:1s;font-size:1.1rem">✨</span> <span class="heart-float" style="top:50%;left:5%;animation-delay:2s;font-size:1.3rem">🤍</span> <span class="heart-float" style="top:70%;left:85%;animation-delay:0.6s;font-size:1.1rem">💫</span> <span class="heart-float" style="top:35%;left:60%;animation-delay:1.5s;font-size:1.4rem">🌸</span> <span class="heart-float" style="top:85%;left:30%;animation-delay:2.8s;font-size:1rem">💕</span> <span class="heart-float" style="top:25%;left:35%;animation-delay:3.5s;font-size:0.9rem">🦋</span> <span class="heart-float" style="top:60%;left:45%;animation-delay:4s;font-size:1.2rem">🌙</span> <span class="heart-float" style="top:42%;left:90%;animation-delay:2.2s;font-size:1rem">🩷</span> <span class="heart-float" style="top:78%;left:55%;animation-delay:3.2s;font-size:1.3rem">🪷</span>
+   <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"><span class="heart-float" style="top:5%;left:10%;animation-delay:0s;font-size:1.6rem">💕</span> <span class="heart-float" style="top:15%;left:75%;animation-delay:1s;font-size:1.1rem">✨</span> <span class="heart-float" style="top:50%;left:5%;animation-delay:2s;font-size:1.3rem">🤍</span> <span class="heart-float" style="top:70%;left:85%;animation-delay:0.6s;font-size:1.1rem">💫</span> <span class="heart-float" style="top:35%;left:60%;animation-delay:1.5s;font-size:1.4rem">🌸</span> <span class="heart-float" style="top:85%;left:30%;animation-delay:2.8s;font-size:1rem">💕</span> <span class="heart-float" style="top:25%;left:35%;animation-delay:3.5s;font-size:0.9rem">🦋</span> <span class="heart-float" style="top:60%;left:45%;animation-delay:4s;font-size:1.2rem">🌙</span>
    </div>
-   <div class="relative z-10 text-center px-4 md:px-6 max-w-4xl">
+   <div class="relative z-10 text-center px-4 md:px-6 max-w-4xl py-20 md:py-0">
     <div class="mb-4 md:mb-6" style="animation: fadeUp 1s 0.2s both">
      <p data-template-id="hero-subtitle" class="canva-text font-hand text-xl md:text-3xl" style="color:var(--midnight);opacity:0.7"></p>
     </div>
@@ -309,8 +237,7 @@
    </div>
   </section><!-- PARALLAX QUOTE 1 -->
   <section class="parallax-strip w-full relative overflow-hidden section-fade" style="height:calc(55 * min(var(--vh,1vh),1vh));background:#1a0f2e">
-   <div class="parallax-img-wrapper">
-    <img data-template-id="parallax-img" class="canva-image parallax-img-move w-full h-full object-cover" loading="lazy" style="opacity:0.7">
+   <div class="parallax-img-wrapper"><img data-template-id="parallax-img" class="canva-image parallax-img-move w-full h-full object-cover" loading="lazy" style="opacity:0.7">
    </div>
    <div data-template-id="parallax-bg-container" class="absolute inset-0 flex items-center justify-center" style="z-index:10">
     <p data-template-id="parallax-quote" class="canva-text font-display text-3xl md:text-5xl font-bold text-center px-6 reveal" style="text-shadow: 0 4px 30px rgba(0,0,0,0.5)"></p>
@@ -320,7 +247,7 @@
    <div class="max-w-6xl mx-auto text-center">
     <h2 data-template-id="memories-title" class="canva-text font-display text-2xl md:text-6xl font-bold reveal animated-underline"></h2>
     <div class="divider-wave reveal"></div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 mt-16" id="memory-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 mt-16">
      <div class="tilt-card card-hover glass-light rounded-2xl md:rounded-3xl overflow-hidden gradient-border reveal" style="animation-delay:0.1s"><img data-template-id="mem-img-1" class="canva-image w-full h-80 md:h-96 object-cover img-reveal" loading="lazy">
       <p data-template-id="mem-cap-1" class="canva-text font-hand text-base md:text-lg p-3 md:p-5"></p>
      </div>
@@ -343,8 +270,7 @@
    </div>
   </section><!-- SECOND PARALLAX -->
   <section class="parallax-strip w-full relative overflow-hidden section-fade" style="height:calc(50 * min(var(--vh,1vh),1vh));background:#1a0f2e">
-   <div class="parallax-img-wrapper">
-    <img data-template-id="parallax-img-2" class="canva-image parallax-img-move w-full h-full object-cover" loading="lazy" style="opacity:0.6">
+   <div class="parallax-img-wrapper"><img data-template-id="parallax-img-2" class="canva-image parallax-img-move w-full h-full object-cover" loading="lazy" style="opacity:0.6">
    </div>
    <div data-template-id="parallax-bg-2" class="absolute inset-0 flex items-center justify-center" style="z-index:10">
     <p data-template-id="parallax-quote-2" class="canva-text font-display text-3xl md:text-5xl font-bold text-center px-6 reveal" style="text-shadow: 0 4px 30px rgba(0,0,0,0.5)"></p>
@@ -414,12 +340,14 @@
     <div class="divider-wave reveal"></div>
     <div class="mt-16 space-y-10">
      <div data-template-id="letter-card-1" class="canva-card glass-light rounded-2xl md:rounded-3xl p-6 md:p-10 text-left gradient-border reveal-envelope opacity-0" style="animation-delay:0.2s">
-      <div class="flex items-center gap-3 mb-4"><span class="text-xl md:text-2xl">💌</span><span class="font-hand text-base md:text-lg" style="color:var(--rose)">From my heart…</span>
+      <div class="flex items-center gap-3 mb-4">
+       <span class="text-xl md:text-2xl">💌</span><span class="font-hand text-base md:text-lg" style="color:var(--rose)">From my heart…</span>
       </div>
       <p data-template-id="letter-1" class="canva-text font-hand text-base md:text-xl leading-relaxed"></p>
      </div>
      <div data-template-id="letter-card-2" class="canva-card glass-light rounded-2xl md:rounded-3xl p-6 md:p-10 text-left gradient-border reveal-envelope opacity-0" style="animation-delay:0.4s">
-      <div class="flex items-center gap-3 mb-4"><span class="text-xl md:text-2xl">💌</span><span class="font-hand text-base md:text-lg" style="color:var(--lavender)">A promise…</span>
+      <div class="flex items-center gap-3 mb-4">
+       <span class="text-xl md:text-2xl">💌</span><span class="font-hand text-base md:text-lg" style="color:var(--lavender)">A promise…</span>
       </div>
       <p data-template-id="letter-2" class="canva-text font-hand text-base md:text-xl leading-relaxed"></p>
      </div>
@@ -475,289 +403,208 @@
   <script>
     // Cursor glow
     const glow = document.getElementById('cursor-glow');
-    document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
-    });
+    document.addEventListener('mousemove', e => { glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px'; });
 
-    // Bokeh overlay
+    // Bokeh
     (function(){
-      const container = document.getElementById('bokeh-overlay');
-      for(let i = 0; i < 12; i++){
-        const dot = document.createElement('div');
-        dot.className = 'bokeh-dot';
-        const size = 80 + Math.random() * 200;
-        dot.style.width = size + 'px';
-        dot.style.height = size + 'px';
-        dot.style.left = Math.random() * 100 + '%';
-        dot.style.top = Math.random() * 100 + '%';
-        dot.style.animationDelay = (Math.random() * 8) + 's';
-        dot.style.animationDuration = (10 + Math.random() * 8) + 's';
-        if(i % 3 === 0) dot.style.background = 'radial-gradient(circle, rgba(196,181,227,0.2) 0%, transparent 70%)';
-        if(i % 3 === 2) dot.style.background = 'radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 70%)';
-        container.appendChild(dot);
+      const c = document.getElementById('bokeh-overlay');
+      for(let i=0;i<12;i++){
+        const d = document.createElement('div'); d.className='bokeh-dot';
+        const s=80+Math.random()*200; d.style.width=s+'px'; d.style.height=s+'px';
+        d.style.left=Math.random()*100+'%'; d.style.top=Math.random()*100+'%';
+        d.style.animationDelay=(Math.random()*8)+'s'; d.style.animationDuration=(10+Math.random()*8)+'s';
+        if(i%3===0) d.style.background='radial-gradient(circle, rgba(196,181,227,0.2) 0%, transparent 70%)';
+        if(i%3===2) d.style.background='radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 70%)';
+        c.appendChild(d);
       }
     })();
 
     // Magnetic buttons
     document.querySelectorAll('.magnetic-btn').forEach(btn => {
-      const isTouchDevice = () => window.innerWidth <= 768;
       btn.addEventListener('mousemove', e => {
-        if(isTouchDevice()) return;
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+        if(window.innerWidth<=768) return;
+        const r=btn.getBoundingClientRect();
+        btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*0.3}px, ${(e.clientY-r.top-r.height/2)*0.3}px) scale(1.05)`;
       });
-      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      btn.addEventListener('mouseleave', ()=>{ btn.style.transform=''; });
     });
 
-    // Petal rain
+    // Petals
     (function(){
-      const container = document.getElementById('petals');
-      const petals = ['🌸','🩷','✿','❀','🪷','💮'];
-      const count = window.innerWidth < 768 ? 8 : 22;
-      for(let i = 0; i < count; i++){
-        const p = document.createElement('span');
-        p.className = 'petal';
-        p.textContent = petals[Math.floor(Math.random() * petals.length)];
-        p.style.left = Math.random() * 100 + '%';
-        p.style.animationDuration = (10 + Math.random() * 10) + 's';
-        p.style.animationDelay = Math.random() * 12 + 's';
-        p.style.fontSize = (0.7 + Math.random() * 0.9) + 'rem';
-        container.appendChild(p);
+      const c=document.getElementById('petals');
+      const ps=['🌸','🩷','✿','❀','🪷','💮'];
+      const n=window.innerWidth<768?8:22;
+      for(let i=0;i<n;i++){
+        const p=document.createElement('span'); p.className='petal';
+        p.textContent=ps[Math.floor(Math.random()*ps.length)];
+        p.style.left=Math.random()*100+'%';
+        p.style.animationDuration=(10+Math.random()*10)+'s';
+        p.style.animationDelay=Math.random()*12+'s';
+        p.style.fontSize=(0.7+Math.random()*0.9)+'rem';
+        c.appendChild(p);
       }
     })();
 
-    // Tap to burst hearts
+    // Tap burst
     document.addEventListener('click', e => {
-      const hearts = ['💕','💗','💖','🩷','💘','✨'];
-      for(let i = 0; i < 5; i++){
-        const h = document.createElement('span');
-        h.className = 'burst-heart';
-        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        h.style.left = (e.clientX + (Math.random()-0.5)*60) + 'px';
-        h.style.top = (e.clientY + (Math.random()-0.5)*40) + 'px';
-        h.style.animationDuration = (0.8 + Math.random()*0.5) + 's';
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), 1500);
+      const hs=['💕','💗','💖','🩷','💘','✨'];
+      for(let i=0;i<5;i++){
+        const h=document.createElement('span'); h.className='burst-heart';
+        h.textContent=hs[Math.floor(Math.random()*hs.length)];
+        h.style.left=(e.clientX+(Math.random()-0.5)*60)+'px';
+        h.style.top=(e.clientY+(Math.random()-0.5)*40)+'px';
+        document.body.appendChild(h); setTimeout(()=>h.remove(),1500);
       }
     });
 
-    // Letter-by-letter hero title
+    // Letter-by-letter hero
     (function(){
-      const el = document.getElementById('hero-title-el');
-      const observer = new MutationObserver(() => {
-        const text = el.textContent;
-        if(!text || el.dataset.animated) return;
-        el.dataset.animated = 'true';
-        el.innerHTML = '';
-        [...text].forEach((ch, i) => {
-          const span = document.createElement('span');
-          span.className = 'letter-char';
-          span.style.animationDelay = (0.8 + i * 0.06) + 's';
-          span.textContent = ch === ' ' ? '\u00A0' : ch;
-          el.appendChild(span);
+      const el=document.getElementById('hero-title-el');
+      const obs=new MutationObserver(()=>{
+        const t=el.textContent; if(!t||el.dataset.animated) return;
+        el.dataset.animated='true'; el.innerHTML='';
+        [...t].forEach((ch,i)=>{
+          const s=document.createElement('span'); s.className='letter-char';
+          s.style.animationDelay=(0.8+i*0.06)+'s';
+          s.textContent=ch===' '?'\u00A0':ch; el.appendChild(s);
         });
       });
-      observer.observe(el, {childNodes: true, characterData: true, subtree: true});
+      obs.observe(el,{childNodes:true,characterData:true,subtree:true});
     })();
 
     // Scroll progress + love meter
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      const p = h > 0 ? (window.scrollY / h) * 100 : 0;
-      document.getElementById('scroll-progress').style.width = p + '%';
-      document.getElementById('love-meter-fill').style.height = p + '%';
+    window.addEventListener('scroll',()=>{
+      const h=document.documentElement.scrollHeight-window.innerHeight;
+      const p=h>0?(window.scrollY/h)*100:0;
+      document.getElementById('scroll-progress').style.width=p+'%';
+      document.getElementById('love-meter-fill').style.height=p+'%';
     });
 
-    // Section fade in
-    const sectionObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in-view'); });
-    }, {threshold: 0.08});
-    document.querySelectorAll('.section-fade').forEach(s => sectionObs.observe(s));
+    // Section fade
+    const sObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view');});},{threshold:0.08});
+    document.querySelectorAll('.section-fade').forEach(s=>sObs.observe(s));
 
     // Starfield
     (function(){
-      const canvas = document.getElementById('starfield');
-      const ctx = canvas.getContext('2d');
-      let stars = [], shootingStars = [];
+      const canvas=document.getElementById('starfield'),ctx=canvas.getContext('2d');
+      let stars=[],shooting=[];
       function resize(){
-        canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
-        const starCount = window.innerWidth < 768 ? 80 : 150;
-        stars = Array.from({length: starCount}, () => ({
-          x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-          r: Math.random() * 2.2 + 0.3, speed: Math.random() * 0.5 + 0.1, phase: Math.random() * Math.PI * 2
+        canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;
+        stars=Array.from({length:window.innerWidth<768?80:150},()=>({
+          x:Math.random()*canvas.width,y:Math.random()*canvas.height,
+          r:Math.random()*2.2+0.3,speed:Math.random()*0.5+0.1,phase:Math.random()*Math.PI*2
         }));
       }
-      resize(); window.addEventListener('resize', resize);
-      setInterval(() => {
-        shootingStars.push({
-          x: Math.random() * canvas.width * 0.8, y: Math.random() * canvas.height * 0.4,
-          len: 60 + Math.random() * 40, speed: 4 + Math.random() * 3,
-          angle: Math.PI / 4 + Math.random() * 0.3, life: 1
-        });
-      }, 3000);
+      resize();window.addEventListener('resize',resize);
+      setInterval(()=>{shooting.push({x:Math.random()*canvas.width*0.8,y:Math.random()*canvas.height*0.4,len:60+Math.random()*40,speed:4+Math.random()*3,angle:Math.PI/4+Math.random()*0.3,life:1});},3000);
       function draw(){
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const t = Date.now() * 0.001;
-        stars.forEach(s => {
-          const alpha = 0.3 + 0.7 * Math.abs(Math.sin(t * s.speed + s.phase));
-          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${alpha})`; ctx.fill();
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        const t=Date.now()*0.001;
+        stars.forEach(s=>{
+          ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+          ctx.fillStyle=`rgba(255,255,255,${0.3+0.7*Math.abs(Math.sin(t*s.speed+s.phase))})`;ctx.fill();
         });
-        shootingStars = shootingStars.filter(ss => {
-          ss.x += Math.cos(ss.angle) * ss.speed;
-          ss.y += Math.sin(ss.angle) * ss.speed;
-          ss.life -= 0.015;
-          if(ss.life <= 0) return false;
-          ctx.beginPath();
-          ctx.moveTo(ss.x, ss.y);
-          ctx.lineTo(ss.x - Math.cos(ss.angle) * ss.len * ss.life, ss.y - Math.sin(ss.angle) * ss.len * ss.life);
-          ctx.strokeStyle = `rgba(232,160,180,${ss.life})`;
-          ctx.lineWidth = 2; ctx.stroke();
-          return true;
+        shooting=shooting.filter(ss=>{
+          ss.x+=Math.cos(ss.angle)*ss.speed;ss.y+=Math.sin(ss.angle)*ss.speed;ss.life-=0.015;
+          if(ss.life<=0)return false;
+          ctx.beginPath();ctx.moveTo(ss.x,ss.y);
+          ctx.lineTo(ss.x-Math.cos(ss.angle)*ss.len*ss.life,ss.y-Math.sin(ss.angle)*ss.len*ss.life);
+          ctx.strokeStyle=`rgba(232,160,180,${ss.life})`;ctx.lineWidth=2;ctx.stroke();return true;
         });
         requestAnimationFrame(draw);
       }
       draw();
     })();
 
-    // Scroll reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if(e.isIntersecting){
-          e.target.classList.add('visible');
-          e.target.querySelectorAll('.img-reveal').forEach(img => img.classList.add('visible'));
-          obs.unobserve(e.target);
-        }
-      });
-    }, {threshold: 0.1});
-    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-envelope,.reveal-scale,.divider-wave,.animated-underline').forEach(el => obs.observe(el));
+    // Reveal observer
+    const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.img-reveal').forEach(img=>img.classList.add('visible'));obs.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-envelope,.reveal-scale,.divider-wave,.animated-underline').forEach(el=>obs.observe(el));
 
     // Smooth scroll
-    document.querySelector('[data-template-id="hero-cta"]').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById('story').scrollIntoView({behavior: 'smooth'});
-    });
+    document.querySelector('[data-template-id="hero-cta"]').addEventListener('click',e=>{e.preventDefault();document.getElementById('story').scrollIntoView({behavior:'smooth'});});
 
-    // Days counter
+    // Counter
     (function(){
-      const start = new Date('2026-05-24T00:00:00+05:30');
-      let prevD = -1, prevH = -1, prevM = -1, prevS = -1;
-      function update(){
-        const now = new Date();
-        const diff = now - start;
-        const days = Math.floor(diff / (1000*60*60*24));
-        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-        const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-        const secs = Math.floor((diff % (1000*60)) / 1000);
-        const dEl = document.getElementById('counter-days');
-        const hEl = document.getElementById('counter-hours');
-        const mEl = document.getElementById('counter-mins');
-        const sEl = document.getElementById('counter-secs');
-        if(days !== prevD){dEl.textContent = days; dEl.classList.remove('count-pop'); void dEl.offsetWidth; dEl.classList.add('count-pop'); prevD = days;}
-        if(hours !== prevH){hEl.textContent = hours; hEl.classList.remove('count-pop'); void hEl.offsetWidth; hEl.classList.add('count-pop'); prevH = hours;}
-        if(mins !== prevM){mEl.textContent = mins; mEl.classList.remove('count-pop'); void mEl.offsetWidth; mEl.classList.add('count-pop'); prevM = mins;}
-        if(secs !== prevS){sEl.textContent = secs; sEl.classList.remove('count-pop'); void sEl.offsetWidth; sEl.classList.add('count-pop'); prevS = secs;}
+      const start=new Date('2026-05-24T00:00:00+05:30');
+      let pD=-1,pH=-1,pM=-1,pS=-1;
+      function up(){
+        const diff=new Date()-start;
+        const d=Math.floor(diff/(1000*60*60*24)),h=Math.floor((diff%(1000*60*60*24))/(1000*60*60)),m=Math.floor((diff%(1000*60*60))/(1000*60)),s=Math.floor((diff%(1000*60))/1000);
+        function set(id,v,prev){const el=document.getElementById(id);if(v!==prev){el.textContent=v;el.classList.remove('count-pop');void el.offsetWidth;el.classList.add('count-pop');}return v;}
+        pD=set('counter-days',d,pD);pH=set('counter-hours',h,pH);pM=set('counter-mins',m,pM);pS=set('counter-secs',s,pS);
       }
-      update(); setInterval(update, 1000);
+      up();setInterval(up,1000);
     })();
 
     // Quotes carousel
     (function(){
-      const slides = document.querySelectorAll('.quote-slide');
-      const dotsContainer = document.getElementById('quote-dots');
-      let current = 0;
-      slides.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.className = 'w-3 h-3 rounded-full cursor-pointer transition-all duration-300';
-        dot.style.background = i === 0 ? 'var(--rose)' : 'var(--lavender)';
-        dot.style.transform = i === 0 ? 'scale(1.4)' : 'scale(1)';
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
+      const slides=document.querySelectorAll('.quote-slide'),dots=document.getElementById('quote-dots');
+      let cur=0;
+      slides.forEach((_,i)=>{
+        const d=document.createElement('span');
+        d.className='w-3 h-3 rounded-full cursor-pointer transition-all duration-300';
+        d.style.background=i===0?'var(--rose)':'var(--lavender)';
+        d.style.transform=i===0?'scale(1.4)':'scale(1)';
+        d.addEventListener('click',()=>goTo(i));dots.appendChild(d);
       });
       function goTo(idx){
-        slides[current].classList.add('hidden');
-        current = idx;
-        slides[current].classList.remove('hidden');
-        slides[current].querySelector('.quote-item').classList.add('quote-fade');
-        setTimeout(() => slides[current].querySelector('.quote-item').classList.remove('quote-fade'), 600);
-        dotsContainer.querySelectorAll('span').forEach((d, i) => {
-          d.style.background = i === current ? 'var(--rose)' : 'var(--lavender)';
-          d.style.transform = i === current ? 'scale(1.4)' : 'scale(1)';
-        });
+        slides[cur].classList.add('hidden');cur=idx;slides[cur].classList.remove('hidden');
+        slides[cur].querySelector('.quote-item').classList.add('quote-fade');
+        setTimeout(()=>slides[cur].querySelector('.quote-item').classList.remove('quote-fade'),600);
+        dots.querySelectorAll('span').forEach((d,i)=>{d.style.background=i===cur?'var(--rose)':'var(--lavender)';d.style.transform=i===cur?'scale(1.4)':'scale(1)';});
       }
-      setInterval(() => goTo((current + 1) % slides.length), 4000);
+      setInterval(()=>goTo((cur+1)%slides.length),4000);
     })();
 
-    // 3D tilt on memory cards
-    document.querySelectorAll('.tilt-card').forEach(card => {
-      const isTouchDevice = () => window.innerWidth <= 768;
-      card.addEventListener('mousemove', e => {
-        if(isTouchDevice()) return;
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(800px) rotateY(${x * 15}deg) rotateX(${-y * 15}deg) translateY(-8px) scale(1.03)`;
-        card.style.boxShadow = `${-x * 25}px ${y * 25}px 50px rgba(232,160,180,0.3)`;
+    // 3D tilt
+    document.querySelectorAll('.tilt-card').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        if(window.innerWidth<=768)return;
+        const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;
+        card.style.transform=`perspective(800px) rotateY(${x*15}deg) rotateX(${-y*15}deg) translateY(-8px) scale(1.03)`;
+        card.style.boxShadow=`${-x*25}px ${y*25}px 50px rgba(232,160,180,0.3)`;
       });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; card.style.boxShadow = ''; });
+      card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.boxShadow='';});
     });
 
-    // Music with visualizer
-    let audioCtx, isPlaying = false;
-    document.getElementById('play-btn').addEventListener('click', function(){
-      const vizRing = document.getElementById('viz-ring');
-      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      vizRing.classList.add('viz-active');
-      const melody = [261.63,329.63,392,523.25,493.88,440,392,349.23,329.63,293.66,329.63,392,523.25,587.33,523.25];
-      melody.forEach((freq, i) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.4);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.4 + 0.38);
-        osc.connect(gain); gain.connect(audioCtx.destination);
-        osc.start(audioCtx.currentTime + i * 0.4);
-        osc.stop(audioCtx.currentTime + i * 0.4 + 0.4);
+    // Music
+    let audioCtx;
+    document.getElementById('play-btn').addEventListener('click',function(){
+      const viz=document.getElementById('viz-ring');
+      if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+      viz.classList.add('viz-active');
+      const melody=[261.63,329.63,392,523.25,493.88,440,392,349.23,329.63,293.66,329.63,392,523.25,587.33,523.25];
+      melody.forEach((freq,i)=>{
+        const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+        o.type='sine';o.frequency.value=freq;
+        g.gain.setValueAtTime(0.15,audioCtx.currentTime+i*0.4);
+        g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+i*0.4+0.38);
+        o.connect(g);g.connect(audioCtx.destination);
+        o.start(audioCtx.currentTime+i*0.4);o.stop(audioCtx.currentTime+i*0.4+0.4);
       });
-      setTimeout(() => vizRing.classList.remove('viz-active'), melody.length * 400 + 200);
+      setTimeout(()=>viz.classList.remove('viz-active'),melody.length*400+200);
     });
 
-    // Parallax for all strips
+    // Parallax
     (function(){
-      const imgs = document.querySelectorAll('.parallax-img-move');
-      const isTouch = () => window.innerWidth <= 768;
-      window.addEventListener('scroll', () => {
-        imgs.forEach(img => {
-          const strip = img.closest('.parallax-strip');
-          if(!strip) return;
-          if(isTouch()) {
-            img.style.transform = 'translateY(0) scale(1)';
-            return;
-          }
-          const rect = strip.getBoundingClientRect();
-          const progress = (window.innerHeight - rect.top) / (window.innerHeight + strip.offsetHeight);
-          if(progress >= -0.2 && progress <= 1.2){
-            img.style.transform = `translateY(${(progress - 0.5) * 100}px) scale(1.15)`;
-          }
+      const imgs=document.querySelectorAll('.parallax-img-move');
+      window.addEventListener('scroll',()=>{
+        imgs.forEach(img=>{
+          const strip=img.closest('.parallax-strip');if(!strip)return;
+          if(window.innerWidth<=768){img.style.transform='translateY(0)';return;}
+          const r=strip.getBoundingClientRect();
+          const p=(window.innerHeight-r.top)/(window.innerHeight+strip.offsetHeight);
+          if(p>=-0.2&&p<=1.2) img.style.transform=`translateY(${(p-0.5)*100}px) scale(1.15)`;
         });
       });
     })();
 
-    // Secret message on final heart tap
-    let heartTaps = 0;
-    document.getElementById('final-heart').addEventListener('click', (e) => {
-      e.stopPropagation();
-      heartTaps++;
-      if(heartTaps >= 3){
-        document.getElementById('secret-msg').classList.remove('hidden');
-      }
+    // Secret message
+    let heartTaps=0;
+    document.getElementById('final-heart').addEventListener('click',e=>{
+      e.stopPropagation();heartTaps++;
+      if(heartTaps>=3) document.getElementById('secret-msg').classList.remove('hidden');
     });
-
-    lucide.createIcons();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0480c220f9e31ab',t:'MTc4MDI1MjIwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0481a46ba3a5543',t:'MTc4MDI1Mjc4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
